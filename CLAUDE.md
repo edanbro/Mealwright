@@ -26,8 +26,8 @@ that checks every plan. See README.md for the product and docs/DESIGN.md for the
 
 ## Working with Eduard
 
-- Claude is the main coder, solver included. Explain the design choices so Eduard can defend
-  them in an interview.
+- Claude writes most of the code, solver included. Explain the reasoning behind each design
+  choice in the PR, so Eduard can review it and decide.
 - Work autonomously and don't hand him chores. Open each PR with auto-merge on.
 - Keep answers short.
 
