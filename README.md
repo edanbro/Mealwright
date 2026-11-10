@@ -89,6 +89,24 @@ security review in [docs/security-review.md](docs/security-review.md).
 Design notes: [docs/DESIGN.md](docs/DESIGN.md) and the [decision records](docs/adr). The solver
 has its own guide in [packages/solver/README.md](packages/solver/README.md).
 
+## How it was built
+
+I built Mealwright with an AI coding agent (Claude Code), and the commit history shows it: most
+commits are written or co-written by Claude. My part was the product and the engineering
+decisions around the code:
+
+- **What to build and why.** The core idea is that a language model shouldn't make the plan. A
+  solver makes it, and a separate validator checks it.
+  ([ADR-0002](docs/adr/0002-hybrid-llm-constraint-solver.md))
+- **The decisions.** Each choice between real alternatives has a decision record in
+  [docs/adr](docs/adr), including the ones I reversed, such as removing the chat
+  ([ADR-0018](docs/adr/0018-remove-the-chat.md)).
+- **How it's judged.** The evals compare the planner against a greedy baseline on 200 seeded
+  scenarios ([evals/REPORT.md](evals/REPORT.md)). CI runs lint, type checks, tests and an API
+  contract check on every pull request.
+- **Before going public.** I ran a security review before hosting it
+  ([docs/security-review.md](docs/security-review.md)).
+
 ## Run it locally
 
 You need Docker and a free [Clerk](https://clerk.com) development instance for sign-in.
